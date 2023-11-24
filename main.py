@@ -1,34 +1,67 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+
 from account_credentials import username, password
 from targetted_account import target_acc
-from time import sleep as time_sleep  # Rename the sleep function to avoid conflict with datetime.time
+from time import sleep as time_sleep
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_experimental_option("detach", True)
-driver = webdriver.Chrome(options=chrome_options)
+class FollowerBot:
 
-driver.get("https://www.instagram.com/")
+    def __init__(self,username,password, target_acc):
 
-driver.implicitly_wait(5)
+        self.chrome_options = webdriver.ChromeOptions()
+        self.chrome_options.add_experimental_option("detach", True)
+        self.driver = webdriver.Chrome(options=self.chrome_options)
+        self.username = username
+        self.password = password
+        self.target_acc = target_acc
 
+    def instagram(self):
+        self.driver.get("https://www.instagram.com/")
 
-class LogIn:
     def login(self):
-        input_username = driver.find_element(By.NAME, 'username')
-        input_username.send_keys(username)
-        input_password = driver.find_element(By.NAME, 'password')
-        input_password.send_keys(password)
-        login_button = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[3]/button')
-        login_button.click()
-        time_sleep(2)
+        # Wait for the username input field to be present
+        input_username = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.NAME, "username"))
+        )
+        input_username.send_keys(self.username)
 
-    def target_acc(self):
-        driver.get(f"https://www.instagram.com/{target_acc}")
-        time_sleep(2)
+        # Wait for the password input field to be present
+        input_password = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.NAME, "password"))
+        )
+        input_password.send_keys(self.password)
 
 
-login = LogIn
-login.login()
-login.target_acc()
+
+d = FollowerBot("businessgenerate","Allah78666","heighterses")
+d.instagram()
+d.login()
+
+
+
+
+
+# chrome_options = webdriver.ChromeOptions()
+# chrome_options.add_experimental_option("detach", True)
+# driver = webdriver.Chrome(options=chrome_options)
+#
+# driver.get("https://www.instagram.com/")
+#
+# driver.implicitly_wait(5)
+#
+#
+#
+# input_username = driver.find_element(By.NAME, 'username')
+# input_username.send_keys(username)
+# input_password = driver.find_element(By.NAME, 'password')
+# input_password.send_keys(password)
+# login_button = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[3]/button')
+# login_button.click()
+# driver.get(f"https://www.instagram.com/{target_acc}")
+
+
