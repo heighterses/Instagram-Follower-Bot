@@ -1,4 +1,4 @@
-Instagram Follower Bot 🤖
+<h1>Instagram Follower Bot 🤖</h1>
 
 <h2>Overview</h2>
 Welcome to the Instagram Follower Bot! This bot automates the process of following the followers of a targeted Instagram account. Customize it by entering your Instagram credentials in the provided code.
