@@ -35,12 +35,18 @@ class FollowerBot:
             EC.presence_of_element_located((By.NAME, "password"))
         )
         input_password.send_keys(self.password)
+        click_login = self.driver.find_element(By.XPATH,'//*[@id="loginForm"]/div/div[3]/button/div')
+        click_login.click()
+
+    def target_account(self):
+        self.driver.get(f"https://www.instagram.com/{self.target_acc}")
 
 
-
-d = FollowerBot("businessgenerate","Allah78666","heighterses")
+d = FollowerBot("businessgenerate","Allah78666","businessdrivendream")
 d.instagram()
 d.login()
+WebDriverWait(d.driver, 10).until(EC.url_changes("https://www.instagram.com/"))
+d.target_account()
 
 
 
