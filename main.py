@@ -4,9 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 
-from account_credentials import username, password
-from targetted_account import target_acc
-from time import sleep as time_sleep, time
+# ------------where the algorithm begins------------------
 
 
 class FollowerBot:
@@ -53,9 +51,9 @@ class FollowerBot:
 
 
 
-d = FollowerBot("businessgenerate", "Allah78666", "businessdrivendream")
-d.instagram()
-d.login()
-WebDriverWait(d.driver, 10).until(EC.url_changes("https://www.instagram.com/"))
-d.target_account()
-d.follow_accounts()
+insta_Bot = FollowerBot("businessgenerate", "Allah78666", "businessdrivendream")
+insta_Bot.instagram()
+insta_Bot.login()
+WebDriverWait(insta_Bot.driver, 10).until(EC.url_changes("https://www.instagram.com/"))
+insta_Bot.target_account()
+insta_Bot.follow_accounts()
