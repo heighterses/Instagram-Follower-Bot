@@ -53,7 +53,7 @@ class FollowerBot:
             button.click()
 
 
-insta_Bot = FollowerBot("businessgenerate", "Allah78666", "businessdrivendream")
+insta_Bot = FollowerBot("username", "p@ssword", "enter_the_account_for_snatching_their_followers")
 insta_Bot.instagram()
 insta_Bot.login()
 WebDriverWait(insta_Bot.driver, 10).until(EC.url_changes("https://www.instagram.com/"))
